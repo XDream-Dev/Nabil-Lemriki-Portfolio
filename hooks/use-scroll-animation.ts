@@ -21,18 +21,25 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(options:
     (entries: IntersectionObserverEntry[]) => {
       const [entry] = entries
 
-      if (entry.isIntersecting && !hasAnimated) {
-        if (delay > 0) {
-          timeoutRef.current = setTimeout(() => {
+      if (triggerOnce) {
+        if (entry.isIntersecting && !hasAnimated) {
+          if (delay > 0) {
+            timeoutRef.current = setTimeout(() => {
+              setIsVisible(true)
+              setHasAnimated(true)
+            }, delay)
+          } else {
             setIsVisible(true)
-            if (triggerOnce) setHasAnimated(true)
-          }, delay)
-        } else {
-          setIsVisible(true)
-          if (triggerOnce) setHasAnimated(true)
+            setHasAnimated(true)
+          }
         }
-      } else if (!triggerOnce && !hasAnimated) {
-        setIsVisible(entry.isIntersecting)
+      } else {
+        // Always set isVisible based on intersection when not triggerOnce
+        if (delay > 0 && entry.isIntersecting) {
+          timeoutRef.current = setTimeout(() => setIsVisible(true), delay)
+        } else {
+          setIsVisible(entry.isIntersecting)
+        }
       }
     },
     [delay, triggerOnce, hasAnimated],

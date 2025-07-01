@@ -1,3 +1,46 @@
+@keyframes about-fade-down-blur {
+  0% {
+    opacity: 0;
+    filter: blur(24px);
+    transform: translateY(-40px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(2px);
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-about-fade-down-blur {
+  animation: about-fade-down-blur 0.9s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes about-slide-down-blur {
+  0% {
+    opacity: 0;
+    filter: blur(24px);
+    transform: translateY(-60px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(2px);
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-about-slide-down-blur {
+  animation: about-slide-down-blur 1.1s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -91,4 +134,44 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes borderWave {
+  0% {
+    border-radius: 2rem 1rem 2rem 1rem;
+  }
+  10% {
+    border-radius: 1.2rem 2.2rem 1.5rem 1.2rem;
+  }
+  20% {
+    border-radius: 1.5rem 1.2rem 2.2rem 1.2rem;
+  }
+  30% {
+    border-radius: 2.2rem 1.5rem 1.2rem 2.2rem;
+  }
+  40% {
+    border-radius: 1.2rem 2rem 1.2rem 2rem;
+  }
+  50% {
+    border-radius: 2rem 1.2rem 2rem 1.2rem;
+  }
+  60% {
+    border-radius: 1.2rem 2.2rem 1.5rem 2.2rem;
+  }
+  70% {
+    border-radius: 2.2rem 1.2rem 2.2rem 1.5rem;
+  }
+  80% {
+    border-radius: 1.5rem 2rem 1.2rem 2rem;
+  }
+  90% {
+    border-radius: 2rem 1.5rem 2rem 1.2rem;
+  }
+  100% {
+    border-radius: 2rem 1rem 2rem 1rem;
+  }
+}
+
+.animate-border-wave {
+  animation: borderWave 2.5s infinite linear;
 }

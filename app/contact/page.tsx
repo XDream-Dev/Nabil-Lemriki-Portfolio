@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Navigation } from "@/components/navigation"
-import { Twitter, Linkedin, Dribbble, Mail } from "lucide-react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Navigation } from "@/components/navigation";
+import { Twitter, Linkedin, Dribbble, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
   return (
@@ -13,7 +13,10 @@ export default function ContactPage() {
         {/* Breadcrumb */}
         <div className="absolute top-8 left-4 z-40">
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <Link href="/" className="hover:text-gray-800 dark:hover:text-gray-200">
+            <Link
+              href="/"
+              className="hover:text-gray-800 dark:hover:text-gray-200"
+            >
               Home
             </Link>
             <span>/</span>
@@ -21,11 +24,15 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center min-h-screen px-4 py-16">
+        <div className="flex flex-col items-center justify-center min-h-screen px-4 py-16 w-full">
+          {/* Services Section (clean, compact) */}
+
           <div className="w-full max-w-2xl">
             {/* Header */}
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-8">Let's Talk</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-8">
+                Let's Talk
+              </h1>
 
               <div className="mb-8 space-y-4">
                 <a
@@ -114,5 +121,5 @@ export default function ContactPage() {
         </div>
       </main>
     </>
-  )
+  );
 }
