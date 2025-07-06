@@ -37,7 +37,6 @@ jobs:
             echo "runner=npx" >> $GITHUB_OUTPUT
           fi
 
-      # Install pnpm FIRST before setup-node
       - name: Install pnpm
         if: steps.detect-pm.outputs.manager == 'pnpm'
         run: npm install -g pnpm@latest
@@ -69,8 +68,9 @@ jobs:
       - name: Build project
         run: ${{ steps.detect-pm.outputs.runner }} next build
 
-      - name: Export static site
-        run: ${{ steps.detect-pm.outputs.runner }} next export
+      # REMOVE THIS EXPORT STEP COMPLETELY
+      # - name: Export static site
+      #   run: ${{ steps.detect-pm.outputs.runner }} next export
 
       - name: Handle 404 for client-side routing
         run: |
