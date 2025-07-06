@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Next.js Portfolio to GitHub Pages
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -21,62 +21,62 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Detect package manager
-        id: detect-package-manager
+        id: detect-pm
         run: |
-          if [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
+          if [ -f "pnpm-lock.yaml" ]; then
             echo "manager=pnpm" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=pnpm" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/yarn.lock" ]; then
+          elif [ -f "yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
+          else
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-          else
-            echo "Unable to determine package manager"
-            exit 1
+            echo "runner=npx" >> $GITHUB_OUTPUT
           fi
 
-      - name: Setup Node
+      # Install pnpm FIRST before setup-node
+      - name: Install pnpm
+        if: steps.detect-pm.outputs.manager == 'pnpm'
+        run: npm install -g pnpm@latest
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: ${{ steps.detect-pm.outputs.manager }}
 
-      - name: Install pnpm
-        if: steps.detect-package-manager.outputs.manager == 'pnpm'
-        run: npm install -g pnpm
-
-      - name: Setup Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
 
-      - name: Restore cache
+      - name: Cache dependencies
         uses: actions/cache@v4
         with:
           path: |
             .next/cache
-            node_modules/.pnpm
             node_modules
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml', '**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-build-${{ hashFiles('**/lock.yaml', '**/package-lock.json', '**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml', '**/package-lock.json', '**/yarn.lock') }}-
+            ${{ runner.os }}-build-
 
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.detect-pm.outputs.manager }} ${{ steps.detect-pm.outputs.command }}
 
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Build project
+        run: ${{ steps.detect-pm.outputs.runner }} next build
 
       - name: Export static site
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        run: ${{ steps.detect-pm.outputs.runner }} next export
 
-      - name: Copy 404.html for client-side routing
-        run: cp out/index.html out/404.html
+      - name: Handle 404 for client-side routing
+        run: |
+          if [ ! -f out/404.html ]; then
+            cp out/index.html out/404.html
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -93,5 +93,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
