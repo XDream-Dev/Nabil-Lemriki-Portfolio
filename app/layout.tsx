@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: {
     default: "Nabil Lemriki - Fullstack Developer & SEO Consultant",
     template: "%s | Nabil Lemriki",

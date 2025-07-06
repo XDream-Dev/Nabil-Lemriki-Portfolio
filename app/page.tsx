@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-static";
 
 import type React from "react";
 import { useState, useRef, useEffect, useCallback } from "react";
@@ -28,10 +29,10 @@ export default function HomePage() {
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | null>(null);
   const lastMoveTime = useRef<number>(0);
   const isScrolling = useRef<boolean>(false);
-  const scrollTimeout = useRef<NodeJS.Timeout>();
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   // Throttle function for better performance
   const throttle = useCallback((func: Function, limit: number) => {
