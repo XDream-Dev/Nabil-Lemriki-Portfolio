@@ -71,48 +71,73 @@ export function ServicesSection() {
     <section
       id="services"
       ref={sectionRef}
-      className={`flex-1 flex flex-col justify-center items-center min-h-screen py-16 overflow-x-hidden transition-all duration-700 ease-out ${
+      className={`relative flex-1 flex flex-col justify-center items-center min-h-screen py-20 transition-all duration-700 ease-out ${
         sectionVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 flex flex-col justify-center items-center gap-8">
-        <div className="flex items-center justify-center gap-6 mb-8">
+      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-8 flex flex-col justify-center items-center gap-12 z-10">
+        {/* Heading */}
+        <div className="flex items-center justify-center gap-6 mb-4">
           <div className="w-16 h-px bg-gray-300 dark:bg-gray-600" />
           <h2
             id="about-title"
-            className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100"
+            className="text-3xl md:text-4xl font-extrabold text-gray-800 dark:text-gray-100 tracking-tight"
           >
-            My Services
+            Services
           </h2>
           <div className="w-16 h-px bg-gray-300 dark:bg-gray-600" />
         </div>
-        <div className="grid w-full gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-center ">
+
+        {/* Service Grid */}
+        <div className="grid w-full gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, i) => {
             const { elementRef, isVisible } =
               useScrollAnimation<HTMLDivElement>({
                 threshold: 0.2,
-                delay: i * 50, // Faster stagger
-                triggerOnce: false, // Animate on scroll up/down
+                delay: i * 70,
+                triggerOnce: false,
               });
             const Icon = service.icon;
+
             return (
               <div
                 key={service.title}
                 ref={elementRef}
-                className={`group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md flex flex-col justify-center items-center text-center transition-all duration-700 ease-out hover:shadow-lg aspect-square w-full h-full ${
+                className={`group relative bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-6 flex flex-col justify-start items-center text-center transition-all duration-700 ease-out hover:scale-[1.05] hover:shadow-2xl ${
                   isVisible
-                    ? "opacity-100 blur-0 scale-100 translate-y-0"
-                    : "opacity-0 blur-lg scale-95 translate-y-8"
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${i * 50 + 100}ms` }}
+                style={{ transitionDelay: `${i * 70 + 100}ms` }}
               >
-                <span className="mb-3 mt-1 rounded-full bg-gray-100 dark:bg-gray-800 p-3 flex items-center justify-center">
-                  <Icon className="w-7 h-7 text-gray-800 dark:text-gray-100" />
+                {/* Icon container with 3D and color swap effect */}
+                <span
+                  className={`
+                    mb-4 mt-1 rounded-full
+                    bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700
+                    p-4 flex items-center justify-center
+                    shadow-inner
+                    transition-all duration-300
+                    group-hover:from-black group-hover:to-black
+                    dark:group-hover:from-gray-100 dark:group-hover:to-white
+                  `}
+                >
+                  <Icon
+                    className={`
+                      w-8 h-8
+                      text-gray-700 dark:text-gray-200
+                      transition-all duration-300
+                      group-hover:text-gray-100 dark:group-hover:text-gray-900
+                      drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]
+                      group-hover:drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]
+                      group-hover:rotate-[8deg]
+                    `}
+                  />
                 </span>
-                <h3 className="font-semibold text-xs md:text-sm mb-1 text-gray-900 dark:text-gray-100 tracking-tight truncate w-full">
+                <h3 className="font-semibold text-base md:text-lg mb-2 text-gray-900 dark:text-gray-100 tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-[10px] md:text-xs leading-tight w-full">
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   {service.desc}
                 </p>
               </div>
@@ -123,3 +148,4 @@ export function ServicesSection() {
     </section>
   );
 }
+export default ServicesSection;
