@@ -170,7 +170,7 @@ export default function AboutPage() {
             >
               <div className="relative inline-block">
                 <Image
-                  src="/CEO1.jpg?height=200&width=350&quality=80&format=webp&blur=10&fit=cover&crop=faces"
+                  src="./CEO1.jpg?height=200&width=350&quality=80&format=webp&blur=10&fit=cover&crop=faces"
                   alt="Nabil Lemriki"
                   width={350}
                   height={200}
