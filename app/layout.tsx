@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import FaviconSwitcher from "@/components/FaviconSwitcher";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -89,13 +90,16 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+        {/* Use only your custom XDreamLight.png favicon */}
+        <link rel="icon" href="/XDark.png" type="image/png" />
+
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="font-solway antialiased">
+        <FaviconSwitcher />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

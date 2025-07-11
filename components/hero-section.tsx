@@ -106,13 +106,23 @@ export function HeroSection() {
           onMouseEnter={() => setHoverKey((k) => k + 1)}
         >
           {/* Waving hand (default), Pointing Down Hand (on hover) */}
-          <span className="block group-hover:hidden">
-            <img
-              src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2U3cnZmcWJiZG9oZnY5M3J3bTF0cXNjdTk2Nmc1M3M5bWJ4NWg4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lMClXMEGuSJLZBqBh9/giphy.gif"
-              alt="Waving hand"
-              className="w-48 h-48"
-              style={{ filter: "none" }}
-            />
+          <span className="block group-hover:hidden items-center justify-center">
+            <>
+              <img
+                key={hoverKey}
+                src="/1.gif"
+                alt="Custom pointing down light"
+                className="block dark:hidden w-48 h-48 rotate-0 group-hover:rotate-180 transition-transform duration-500 ease-in-out"
+                style={{ filter: "none" }}
+              />
+              <img
+                key={hoverKey + 1000}
+                src="/2.gif"
+                alt="Custom pointing down dark"
+                className="hidden dark:block w-48 h-48 rotate-0 group-hover:rotate-180 transition-transform duration-500 ease-in-out"
+                style={{ filter: "none" }}
+              />
+            </>
           </span>
           <span className="hidden group-hover:flex items-center justify-center">
             {/* Animated Pointing Down Hand GIF with smooth 180deg rotation on hover, restarts on hover */}
