@@ -478,3 +478,41 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
+@keyframes borderWave {
+  0% {
+    border-radius: 1.5rem 0.5rem 1.5rem 0.5rem;
+  }
+  25% {
+    border-radius: 0.5rem 1.5rem 0.5rem 1.5rem;
+  }
+  50% {
+    border-radius: 1.5rem 1.5rem 0.5rem 0.5rem;
+  }
+  75% {
+    border-radius: 0.5rem 0.5rem 1.5rem 1.5rem;
+  }
+  100% {
+    border-radius: 1.5rem 0.5rem 1.5rem 0.5rem;
+  }
+}
+
+.animate-border-wave {
+  animation: borderWave 3s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slideRight 1.5s ease-in-out infinite;
+}

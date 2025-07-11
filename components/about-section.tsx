@@ -98,7 +98,7 @@ export function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className={`h-screen flex flex-col justify-center items-center transition-all duration-1000 ease-out ${
+      className={`min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 transition-all duration-1000 ease-out ${
         sectionVisible ? "opacity-100" : "opacity-0"
       }`}
       aria-labelledby="about-title"
@@ -111,37 +111,35 @@ export function AboutSection() {
         }`}
       >
         <div className="flex items-center justify-center gap-6 mb-8">
-          <div className="w-16 h-px bg-gray-300 dark:bg-gray-600" />
+          <div className="w-12 sm:w-16 h-px bg-gray-300 dark:bg-gray-600" />
           <h2
             id="about-title"
-            className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100"
           >
             About
           </h2>
-          <div className="w-16 h-px bg-gray-300 dark:bg-gray-600" />
+          <div className="w-12 sm:w-16 h-px bg-gray-300 dark:bg-gray-600" />
         </div>
-        <div
-          className={`flex flex-col lg:flex-row items-start gap-12 mb-8 w-full`}
-        >
+        <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16 mb-8 w-full">
           {/* Left Side - Profile Image with Sticky Notes */}
           <div
             ref={profileRef}
-            className={`relative flex-shrink-0 flex flex-col items-center max-w-xs w-full transition-all duration-1000 ease-out ${
+            className={`relative flex-shrink-0 flex flex-col items-center max-w-xs w-full mx-auto lg:mx-0 transition-all duration-1000 ease-out ${
               profileVisible ? "animate-about-slide-down-blur" : "opacity-0"
             }`}
             style={{ minWidth: 220 }}
           >
-            <div className="relative w-[200px] h-[200px] mx-auto">
+            <div className="relative w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] mx-auto align-center">
               <Image
-                src="/placeholder.svg?height=200&width=200"
+                src="./CEO1.jpg?height=200&width=200&format=webp&quality=80&cache=true"
                 alt="Nabil Lemriki - Fullstack Developer"
                 width={200}
                 height={200}
-                className="rounded-full grayscale hover:grayscale-0 transition-all duration-500 shadow-xl border-4 border-white dark:border-gray-800"
+                className="rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 shadow-xl border-4 border-white dark:border-gray-800"
                 priority
               />
               {/* Sketched arrow pointing to photo */}
-              <div className="absolute -top-8 -right-12 transform rotate-12">
+              <div className="absolute -top-8 -right-10 sm:-right-12 transform rotate-12 pointer-events-none">
                 <svg
                   width="60"
                   height="40"
@@ -165,10 +163,15 @@ export function AboutSection() {
                   />
                 </svg>
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-lg border-2 border-gray-100 dark:border-gray-700">
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                  @nabil_lemriki
-                </span>
+              <div className="absolute -bottom-8 -right-4 bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-lg border-2 border-gray-100 dark:border-gray-700 ">
+                <a
+                  href="https://www.instagram.com/nabil_xdream/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition-colors duration-300 "
+                >
+                  @nabil_xdream⁀➷
+                </a>
               </div>
               {/* Sticky Notes around profile */}
               <div className="absolute inset-0 pointer-events-none">
@@ -181,7 +184,7 @@ export function AboutSection() {
           {/* Right Side - Links, Skills, Experience */}
           <div
             ref={contentRef}
-            className={`flex-1 text-left lg:pl-8 w-full max-w-xl transition-all duration-700 ease-out ${
+            className={`flex-1 text-left lg:pl-8 w-full max-w-xl mx-auto lg:mx-0 transition-all duration-700 ease-out ${
               contentVisible ? "animate-about-fade-down-blur" : "opacity-0"
             }`}
           >
@@ -195,7 +198,7 @@ export function AboutSection() {
               <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">
                 Links
               </h3>
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center lg:justify-start">
                 {[
                   {
                     Icon: Twitter,
@@ -247,7 +250,7 @@ export function AboutSection() {
               <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">
                 Skills
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 {skills.slice(0, 6).map((skill, idx) => (
                   <Badge
                     key={skill}
@@ -271,7 +274,7 @@ export function AboutSection() {
               <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">
                 Experience
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-3 max-w-xl mx-auto lg:mx-0">
                 <div
                   className="animate-about-fade-down-blur"
                   style={{ animationDelay: "400ms" }}
@@ -303,23 +306,22 @@ export function AboutSection() {
               </div>
 
               <div
-                className="mt-4 animate-about-fade-down-blur"
+                className="mt-4 animate-about-fade-down-blur flex justify-center lg:justify-start"
                 style={{ animationDelay: "600ms" }}
               >
-                {/* About Me button with dynamic color, animated border radius, and arrow */}
                 <Button
                   className="bg-gray-900 text-white dark:bg-white dark:text-gray-900 border border-gray-900 dark:border-white hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200 animate-border-wave"
                   onClick={() => router.push("/about")}
                 >
                   About Me
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-4 h-4 animate-slide-right" />
                 </Button>
               </div>
             </div>
           </div>
         </div>
-        <div className="max-w-2xl mx-auto mb-4">
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div className="max-w-2xl mx-auto mb-4 px-4 sm:px-0">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             5+ years of experience building smart, scalable websites, with a
             love for SEO, UX/UI, and crafting custom tools for clients.
           </p>
