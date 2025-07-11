@@ -170,7 +170,7 @@ export default function AboutPage() {
             >
               <div className="relative inline-block">
                 <Image
-                  src="/placeholder.svg?height=200&width=350"
+                  src="/CEO1.jpg?height=200&width=350&quality=80&format=webp&blur=10&fit=cover&crop=faces"
                   alt="Nabil Lemriki"
                   width={350}
                   height={200}
@@ -199,6 +199,7 @@ export default function AboutPage() {
                   </div>
                   <div className="bg-green-200 dark:bg-green-300 p-2 rounded-lg shadow-lg transform rotate-2">
                     <div className="text-center">
+                      <div className="text-lg font-bold text-gray-800">✨</div>
                       <div className="text-xs text-gray-800">Available</div>
                       <div className="text-xs text-gray-800">for hiring</div>
                     </div>
@@ -296,14 +297,6 @@ export default function AboutPage() {
                   ))}
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* Projects Section (from Home) */}
-          <section className="py-20 transition-all duration-1000 ease-out min-h-screen flex flex-col justify-center mb-16">
-            {/* Reuse the ProjectsSection component for consistency */}
-            <div className="max-w-5xl mx-auto w-full">
-              {require("@/components/projects-section").ProjectsSection()}
             </div>
           </section>
 
