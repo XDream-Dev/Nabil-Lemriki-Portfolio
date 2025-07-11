@@ -18,7 +18,7 @@ export default function FaviconSwitcher() {
         document.head.appendChild(favicon);
       }
 
-      favicon.href = isDark ? "public/XDark.png" : "public/XLight.png";
+      favicon.href = isDark ? "/XDark.png" : "/XLight.png";
     };
 
     // Set favicon immediately on load

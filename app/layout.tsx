@@ -92,10 +92,14 @@ export default function RootLayout({
         />
 
         {/* Use only your custom XDreamLight.png favicon */}
-        <link rel="icon" href="public/XDark.png" type="image/png" />
+        <link
+          rel="icon"
+          href="/Nabil-Lemriki-Portfolio/public/XDark.png"
+          type="image/png"
+        />
 
-        <link rel="apple-touch-icon" href="public/apple-touch-icon.png" />
-        <link rel="manifest" href="public/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="font-solway antialiased">
