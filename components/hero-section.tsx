@@ -110,14 +110,14 @@ export function HeroSection() {
             <>
               <img
                 key={hoverKey}
-                src="/1.gif"
+                src="./1.gif"
                 alt="Custom pointing down light"
                 className="block dark:hidden w-48 h-48 rotate-0 group-hover:rotate-180 transition-transform duration-500 ease-in-out"
                 style={{ filter: "none" }}
               />
               <img
                 key={hoverKey + 1000}
-                src="/2.gif"
+                src="./2.gif"
                 alt="Custom pointing down dark"
                 className="hidden dark:block w-48 h-48 rotate-0 group-hover:rotate-180 transition-transform duration-500 ease-in-out"
                 style={{ filter: "none" }}
