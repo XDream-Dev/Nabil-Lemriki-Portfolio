@@ -28,12 +28,17 @@ export const metadata: Metadata = {
     "WordPress",
     "CMS",
   ],
-  authors: [{ name: "Nabil Lemriki", url: "https://nabillemriki.com" }],
+  authors: [
+    {
+      name: "Nabil Lemriki",
+      url: "https://xdream-dev.github.io/Nabil-Lemriki-Portfolio/",
+    },
+  ],
   creator: "Nabil Lemriki",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nabillemriki.com",
+    url: "https://xdream-dev.github.io/Nabil-Lemriki-Portfolio/",
     title: "Nabil Lemriki - Fullstack Developer & SEO Consultant",
     description:
       "A passionate fullstack developer & SEO consultant with 4+ years of experience building smart, scalable websites.",

@@ -467,24 +467,70 @@ export default function AboutPage() {
           </section>
 
           {/* Footer */}
-          <section
-            ref={footerAnim.elementRef}
-            className={`min-h-[40vh] flex flex-col justify-center text-center py-8 border-t border-gray-200 dark:border-gray-700 transition-all duration-1000 ease-out
-            ${
-              footerAnim.isVisible
-                ? "opacity-100 blur-0 scale-100 translate-y-0"
-                : "opacity-0 blur-lg scale-95 translate-y-8"
-            }
-          `}
-          >
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Built with 💜 by Nabil using{" "}
-              <span className="underline">Framer</span> & Canvas ✨
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-              ©2025 Nabil Lemriki
-            </p>
-          </section>
+          <div className="text-center py-16 mt-16 border-t-2 border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              {/* Left Side */}
+              <p className="text-lg text-gray-600 dark:text-gray-400 font-semibold">
+                © 2025 Nabil Lemriki | XDream.Dev — All rights reserved.
+              </p>
+
+              {/* Social Links */}
+              <div className="flex gap-5 items-center">
+                {/* GitHub */}
+                <a
+                  href="https://github.com/XDream-Dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition"
+                  aria-label="GitHub"
+                >
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.93.58.1.79-.25.79-.56 0-.27-.01-1.14-.02-2.07-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.52-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.19 1.85 1.19 3.11 0 4.43-2.69 5.41-5.25 5.69.42.36.78 1.08.78 2.18 0 1.58-.01 2.85-.01 3.23 0 .31.2.67.8.56A10.999 10.999 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z" />
+                  </svg>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://linkedin.com/in/nabil-lemriki"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
+                  aria-label="LinkedIn"
+                >
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75c.97 0 1.75.79 1.75 1.75s-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.88 0-2.17 1.47-2.17 2.98v5.69h-3v-10h2.88v1.37h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.58v5.61z" />
+                  </svg>
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:nabil.lemriki@gmail.com"
+                  className="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition"
+                  aria-label="Email"
+                >
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                  </svg>
+                </a>
+
+                {/* Phone with Tooltip */}
+                <div className="relative group">
+                  <div
+                    className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition cursor-pointer"
+                    aria-label="Phone"
+                  >
+                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                      <path d="M6.62 10.79a15.09 15.09 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.27 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1v3.61a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.26 1l-2.29 2.21z" />
+                    </svg>
+                  </div>
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm px-4 py-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    +212 6 37 10 17 85
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </>

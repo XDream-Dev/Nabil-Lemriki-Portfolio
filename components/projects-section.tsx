@@ -14,7 +14,7 @@ const projects = [
     slug: "beauty-secrets",
     title: "Beauty Secrets",
     description: "Full-stack CMS-based shop with SEO and product animations.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "./bts.webp?height=300&width=500",
     tag: "E-Commerce",
     tagColor:
       "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
