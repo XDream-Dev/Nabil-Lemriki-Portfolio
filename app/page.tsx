@@ -303,6 +303,7 @@ export default function HomePage() {
             >
               <ContactSection />
             </section>
+
             {/* Footer */}
             <div className="text-center py-16 mt-16 border-t-2 border-gray-200 dark:border-gray-700">
               <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -339,16 +340,21 @@ export default function HomePage() {
                     </svg>
                   </a>
 
-                  {/* Email */}
-                  <a
-                    href="mailto:nabil.lemriki@gmail.com"
-                    className="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition"
-                    aria-label="Email"
-                  >
-                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
-                    </svg>
-                  </a>
+                  {/* Email with Tooltip */}
+                  <div className="relative group">
+                    <a
+                      href="mailto:nabil.lemriki@gmail.com"
+                      className="text-gray-600 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition flex items-center"
+                      aria-label="Email"
+                    >
+                      <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                      </svg>
+                    </a>
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1 text-sm bg-gray-800 text-white rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                      nabil.lemriki@gmail.com
+                    </div>
+                  </div>
 
                   {/* Phone with Tooltip */}
                   <div className="relative group">
