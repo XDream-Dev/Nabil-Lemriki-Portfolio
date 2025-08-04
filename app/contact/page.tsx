@@ -9,10 +9,12 @@ import Link from "next/link";
 export default function ContactPage() {
   return (
     <>
-      <Navigation />
       <main className="min-h-screen bg-white dark:bg-gray-900 relative transition-colors duration-300 bg-dotted">
         {/* Breadcrumb */}
-        <div className="absolute top-8 left-4 z-40">
+        <Navigation />
+
+        {/* Breadcrumb */}
+        <div className="pt-8 pb-4 px-4 max-w-6xl mx-auto">
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <Link
               href="/"
