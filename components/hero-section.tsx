@@ -98,7 +98,7 @@ export function HeroSection() {
       >
         <button
           type="button"
-          aria-label="Scroll to About"
+          aria-label="Scroll to Projects"
           onClick={() => {
             const about = document.getElementById("projects");
             if (about) about.scrollIntoView({ behavior: "smooth" });

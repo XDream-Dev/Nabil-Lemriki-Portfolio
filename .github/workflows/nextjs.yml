@@ -1,4 +1,4 @@
-name: Deploy Next.js Portfolio to GitHub Pages
+name: Fast Deploy Next.js Portfolio to GitHub Pages
 
 on:
   push:
